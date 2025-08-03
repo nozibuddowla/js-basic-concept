@@ -11,22 +11,20 @@ ADVANCED: If the seat is normal, then the price will be 500 taka, and if it is a
 */
 
 let totalRows = 10;
-let totalIncome = 0;
 let premiumSeatCount = 0;
 let normalSeatCount = 0;
-let totalSeat = 0;
 let normalSeatPrice = 500;
 let premiumSeatPrice = 800;
 
-for (let index = 1; index <= totalRows; index++) {
-    if (index % 3 === 0 || index % 5 === 0) {
-        console.log(`Row ${index} - Premium Row`);
-        premiumSeatCount = premiumSeatCount + 1;
+for (let row = 1; row <= totalRows; row++) {
+    if (row % 3 === 0 || row % 5 === 0) {
+        console.log(`Row ${row} - Premium Row`);
+        premiumSeatCount++;
     } else {
-        console.log(`Row ${index} - Normal Row`);
-        normalSeatCount = normalSeatCount + 1;
+        console.log(`Row ${row} - Normal Row`);
+        normalSeatCount++;
     }
 }
 
-totalIncome = (premiumSeatCount * premiumSeatPrice) + (normalSeatCount * normalSeatPrice);
+let totalIncome = (premiumSeatCount * premiumSeatPrice) + (normalSeatCount * normalSeatPrice);
 console.log(`Total Income: ${totalIncome} Taka`);
