@@ -50,38 +50,83 @@ If any condition is not met, then a default tag "Tag: General"
 ADVANCED: Handle case insensitively.
 */
 
-let productDescription = "This is a Limited Edition cotton jacket from our New Arrival collection, now on SALE!";
+// let productDescription = "This is a Limited Edition cotton jacket from our New Arrival collection, now on SALE!";
 
-let description = productDescription.toLowerCase();
+// let description = productDescription.toLowerCase();
 
-let tags = [];
+// let tags = [];
 
-// Check for Material
-if (description.includes("cotton")) {
-    tags.push("Material: Cotton");
-} else {
-    tags.push("Material: General");
+// if (description.includes("cotton")) {
+//     tags.push("Material: Cotton");
+// } else {
+//     tags.push("Material: General");
+// }
+
+// if (description.includes("sale")) {
+//     tags.push("Category: Sale Item");
+// } else {
+//     tags.push("Category: General");
+// }
+
+// if (description.includes("new arrival")) {
+//     tags.push("Status: New Arrival");
+// } else {
+//     tags.push("Status: General");
+// }
+
+// if (description.includes("limited edition")) {
+//     tags.push("Availability: Limited");
+// } else {
+//     tags.push("Availability: General");
+// }
+
+// console.log(tags.join("\n"));
+
+
+/*
+Problem 03:
+=============
+A new company, "AlphaCorp", wants to automatically generate a Unique Employee username for their employees to access their database. This username will be based on some personal information about the employee.
+
+You need to write a program that takes an object named employee as input, where the employee information is as follows:
+{ firstName: "John", lastName: "Doe", employeeId: 101, departmentCode: "HR" }
+
+// Output:
+username: doe101@alphacorp.com
+
+Rules:
+👉 First, the first three letters of lastName will be lowercase.
+👉 Then, the employeeId.
+👉 Then, the @.
+👉 Then, the company name will be lowercase.
+👉 Finally, the .com.
+
+ADVANCED: Generate a Temporary Password along with the username.
+👉 If lastName is less than three characters, then all the letters of lastName will be used.
+👉 for Password generate use firstname last 3 char + # + departmentCode
+
+// Output:
+ID: doe101@alphacorp.com, TempPass: jn1#AC
+*/ 
+
+const employee = {
+    firstName: "Arnob",
+    lastName: "Chowdhury",
+    employeeId: 101, 
+    departmentCode: "Business Executive"
 }
 
-// Check for Category
-if (description.includes("sale")) {
-    tags.push("Category: Sale Item");
-} else {
-    tags.push("Category: General");
-}
+const companyName = "AlphaCorp";
+let lastThreeChar;
+let userName;
 
-// Check for Status
-if (description.includes("new arrival")) {
-    tags.push("Status: New Arrival");
+if (employee.lastName.length < 3) {
+    lastThreeChar = employee.lastName.toLowerCase();
 } else {
-    tags.push("Status: General");
+    lastThreeChar = employee.lastName.slice(0, 3).toLowerCase();
 }
+userName = `${lastThreeChar}${employee.employeeId}@${companyName.toLowerCase()}.com`;
 
-// Check for Availability
-if (description.includes("limited edition")) {
-    tags.push("Availability: Limited");
-} else {
-    tags.push("Availability: General");
-}
+let password = `${employee.firstName.slice(-3)}#${employee.departmentCode.slice(0, 2).toUpperCase()}`;
 
-console.log(tags.join("\n"));
+console.log(`ID: ${userName}, TempPass: ${password}`);
