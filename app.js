@@ -52,15 +52,36 @@ ADVANCED: Handle case insensitively.
 
 let productDescription = "This is a Limited Edition cotton jacket from our New Arrival collection, now on SALE!";
 
-if (productDescription.toLowerCase().includes("cotton")) {
-    console.log("Material: Cotton");
-} else if (productDescription.toLowerCase().includes("sale")) {
-    console.log("Category: Sale Item");
-} else if (productDescription.toLowerCase().includes("limited edition")) {
-    console.log("Availability: Limited");
-} else if (productDescription.toLowerCase().includes("new arrival")) {
-    console.log("Status: New Arrival");
+let description = productDescription.toLowerCase();
+
+let tags = [];
+
+// Check for Material
+if (description.includes("cotton")) {
+    tags.push("Material: Cotton");
 } else {
-    console.log("Tag: General");
-    
+    tags.push("Material: General");
 }
+
+// Check for Category
+if (description.includes("sale")) {
+    tags.push("Category: Sale Item");
+} else {
+    tags.push("Category: General");
+}
+
+// Check for Status
+if (description.includes("new arrival")) {
+    tags.push("Status: New Arrival");
+} else {
+    tags.push("Status: General");
+}
+
+// Check for Availability
+if (description.includes("limited edition")) {
+    tags.push("Availability: Limited");
+} else {
+    tags.push("Availability: General");
+}
+
+console.log(tags.join("\n"));
